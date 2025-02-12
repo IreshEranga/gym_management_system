@@ -19,7 +19,7 @@ class User {
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user && md5($password) == $user['password']) {
-            return $user; // Return user if MD5 hashed password matches
+            return $user; 
         }
 
         return false; // Return false if password doesn't match or user doesn't exist
