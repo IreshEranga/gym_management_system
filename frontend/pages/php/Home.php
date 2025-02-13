@@ -65,30 +65,52 @@
     </section>
 
     <section id="services" class="services-section py-5">
-        <div class="container">
-            <h2 class="text-center mb-4 servicetxt">Our <span>Services</span></h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card p-4 text-center">
-                        <h4>💪 Strength Training</h4>
-                        <p>Build muscle and increase endurance with our expert trainers.</p>
-                    </div>
+    <div class="container">
+        <h2 class="text-center mb-4 servicetxt">Our <span>Services</span></h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>💪 Strength Training</h4>
+                    <p>Build muscle and increase endurance with our expert trainers.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="card p-4 text-center">
-                        <h4>🔥 Cardio Workouts</h4>
-                        <p>High-intensity workouts to burn calories and improve heart health.</p>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🔥 Cardio Workouts</h4>
+                    <p>High-intensity workouts to burn calories and improve heart health.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="card p-4 text-center">
-                        <h4>🥗 Nutrition Guidance</h4>
-                        <p>Get personalized meal plans for a healthier lifestyle.</p>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🥗 Nutrition Guidance</h4>
+                    <p>Get personalized meal plans for a healthier lifestyle.</p>
                 </div>
             </div>
         </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🧘 Yoga & Meditation</h4>
+                    <p>Relax your mind and improve flexibility with guided yoga sessions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🏋️‍♂️ Personal Training</h4>
+                    <p>One-on-one coaching with certified trainers for customized workouts.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🚴 Group Fitness Classes</h4>
+                    <p>Join fun and engaging group workout sessions for motivation and results.</p>
+                </div>
+            </div>
+        </div>
+        </div>
     </section>
+
 
     <section id="contact" class="contact-section py-5">
         <div class="container">
