@@ -102,11 +102,11 @@ body {
     font-size: 2.5rem;
 }
 
-/* Home.css */
+
 
 /* Section Background and Layout */
 #services {
-    background-color: #1a1a1a; /* Light gray background for the services section */
+    background-color: #1a1a1a; 
     padding-top: 50px;
     padding-bottom: 50px;
 }
@@ -115,40 +115,40 @@ body {
 .services-section h2 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333; /* Dark text color */
+    color: #333; 
 }
 
 .services-section span {
-    color: #ff6347; /* Tomato color to highlight the word 'Services' */
+    color: #ff6347; 
 }
 
 /* Add shadow and hover effect for cards */
 .services-section .card {
     background-color: #ffffff;
     border: 1px solid #fa3f106e;
-    box-shadow: 0 6px 20px rgba(240, 56, 1, 0.15); /* Stronger and deeper shadow */
+    box-shadow: 0 6px 20px rgba(240, 56, 1, 0.15); 
     border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .services-section .card:hover {
-    transform: translateY(-10px); /* Slight lift effect on hover */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); /* Larger, more intense shadow on hover */
+    transform: translateY(-10px); 
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); 
 }
 
 
-/* Animate text in h4 */
+
 .services-section .card h4 {
     font-size: 1.8rem;
     font-weight: bold;
     color: #333;
     margin-bottom: 15px;
     opacity: 0;
-    animation: fadeInUp 0.8s forwards; /* Text fade-in and slide-up animation */
+    animation: fadeInUp 0.8s forwards; 
 }
 
 .services-section .card:nth-child(1) h4 {
-    animation-delay: 0.2s; /* Delay for each service title */
+    animation-delay: 0.2s; 
 }
 
 .services-section .card:nth-child(2) h4 {
@@ -163,16 +163,16 @@ body {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px); /* Start from a lower position */
+        transform: translateY(30px); 
     }
     to {
         opacity: 1;
-        transform: translateY(0); /* End at the original position */
+        transform: translateY(0); 
     }
 }
 
 .services-section .card p {
-    color: #666; /* Lighter text color for descriptions */
+    color: #666; 
 }
 
 
