@@ -46,21 +46,72 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h2 class="section-title">About <span>Power Fit</span></h2>
-                    <p>
+                    <img src="../../assets/images/about_builder.png" alt="Gym Workout" class="about-img">
+                </div>
+                <div class="col-md-5">
+                    <h2 class="section-title">About <span>Power Fit</span></h2> <br><br>
+                    <p class="section-para">
                         At <strong>Power Fit</strong>, we are committed to transforming your fitness journey. Our state-of-the-art gym provides world-class equipment, experienced trainers, and a supportive environment to help you achieve your fitness goals. Whether you're looking to build strength, lose weight, or improve endurance, we have the perfect program for you!
                     </p>
-                    <ul class="about-list">
+                    <!-- <ul class="about-list">
                         <li>🏋️‍♂️ Advanced Strength Training</li>
                         <li>💪 Personalized Fitness Programs</li>
                         <li>🔥 High-Intensity Cardio Sessions</li>
                         <li>🥗 Nutrition & Wellness Guidance</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <img src="../../assets/images/about_builder.png" alt="Gym Workout" class="about-img">
+                    </ul> -->
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4 servicetxt">Our <span>Services</span></h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card p-4 text-center">
+                        <h4>💪 Strength Training</h4>
+                        <p>Build muscle and increase endurance with our expert trainers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 text-center">
+                        <h4>🔥 Cardio Workouts</h4>
+                        <p>High-intensity workouts to burn calories and improve heart health.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 text-center">
+                        <h4>🥗 Nutrition Guidance</h4>
+                        <p>Get personalized meal plans for a healthier lifestyle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4 contacttxt">Contact <span>Us</span></h2>
+            <form action="../../../backend/controllers/Contact.php" method="POST" class="mx-auto w-50">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
         </div>
     </section>
 
