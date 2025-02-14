@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Power Fit</title>
+    <link href="../../css/Home.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="../../css/Home.css" rel="stylesheet">
+    
     
 </head>
 <body>
@@ -67,7 +68,7 @@
     <section id="services" class="services-section py-5">
     <div class="container">
         <h2 class="text-center mb-4 servicetxt">Our <span>Services</span></h2>
-        <div class="row">
+        <div class="row servicesListRow">
             <div class="col-md-4">
                 <div class="card p-4 text-center">
                     <h4>💪 Strength Training</h4>
@@ -88,7 +89,7 @@
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-4 servicesListRow">
             <div class="col-md-4">
                 <div class="card p-4 text-center">
                     <h4>🧘 Yoga & Meditation</h4>
@@ -115,6 +116,7 @@
     <section id="contact" class="contact-section py-5">
         <div class="container">
             <h2 class="text-center mb-4 contacttxt">Contact <span>Us</span></h2>
+            <div class="formContactUs">
             <form action="../../../backend/controllers/Contact.php" method="POST" class="mx-auto w-50">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -134,6 +136,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Send Message</button>
             </form>
+            </div>
         </div>
     </section>
 
