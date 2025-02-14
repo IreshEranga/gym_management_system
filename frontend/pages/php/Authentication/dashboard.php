@@ -14,8 +14,10 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <h1>Welcome to Gym Dashboard</h1>
-    <p>Hello, <strong><?php echo htmlspecialchars($_SESSION['user_email']); ?></strong></p>
-    
+    <p><strong>User ID:</strong> <?php echo htmlspecialchars($_SESSION['user_id']); ?></p>
+    <p><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['user_email']); ?></p>
+    <p><strong>Role ID:</strong> <?php echo htmlspecialchars($_SESSION['user_role_id']); ?></p>
+
     <p><a href="logout.php">Logout</a></p>
 </body>
 </html>
