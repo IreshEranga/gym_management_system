@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Power Fit</title>
+    <link href="../../css/Home.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="../../css/Home.css" rel="stylesheet">
+    
     
 </head>
 <body>
@@ -22,7 +23,7 @@
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../php/Authentication/Login.php">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -65,34 +66,57 @@
     </section>
 
     <section id="services" class="services-section py-5">
-        <div class="container">
-            <h2 class="text-center mb-4 servicetxt">Our <span>Services</span></h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card p-4 text-center">
-                        <h4>💪 Strength Training</h4>
-                        <p>Build muscle and increase endurance with our expert trainers.</p>
-                    </div>
+    <div class="container">
+        <h2 class="text-center mb-4 servicetxt">Our <span>Services</span></h2>
+        <div class="row servicesListRow">
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>💪 Strength Training</h4>
+                    <p>Build muscle and increase endurance with our expert trainers.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="card p-4 text-center">
-                        <h4>🔥 Cardio Workouts</h4>
-                        <p>High-intensity workouts to burn calories and improve heart health.</p>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🔥 Cardio Workouts</h4>
+                    <p>High-intensity workouts to burn calories and improve heart health.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="card p-4 text-center">
-                        <h4>🥗 Nutrition Guidance</h4>
-                        <p>Get personalized meal plans for a healthier lifestyle.</p>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🥗 Nutrition Guidance</h4>
+                    <p>Get personalized meal plans for a healthier lifestyle.</p>
                 </div>
             </div>
         </div>
+
+        <div class="row mt-4 servicesListRow">
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🧘 Yoga & Meditation</h4>
+                    <p>Relax your mind and improve flexibility with guided yoga sessions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🏋️‍♂️ Personal Training</h4>
+                    <p>One-on-one coaching with certified trainers for customized workouts.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-4 text-center">
+                    <h4>🚴 Group Fitness Classes</h4>
+                    <p>Join fun and engaging group workout sessions for motivation and results.</p>
+                </div>
+            </div>
+        </div>
+        </div>
     </section>
+
 
     <section id="contact" class="contact-section py-5">
         <div class="container">
             <h2 class="text-center mb-4 contacttxt">Contact <span>Us</span></h2>
+            <div class="formContactUs">
             <form action="../../../backend/controllers/Contact.php" method="POST" class="mx-auto w-50">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
@@ -112,6 +136,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Send Message</button>
             </form>
+            </div>
         </div>
     </section>
 
