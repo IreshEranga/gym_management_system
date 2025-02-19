@@ -1,0 +1,16 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* nav bar */
+.navbar {
+    background-color: #212529;
+}
+
+.navbar-nav .nav-link {
+    color: white;
+}
