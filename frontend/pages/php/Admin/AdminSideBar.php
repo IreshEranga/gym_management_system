@@ -23,7 +23,7 @@
                 <a href="#"><i class="fas fa-shopping-cart"></i> Trainers</a>
             </li>
             <li>
-                <a href="#"><img src="../../../assets/icons/user.png" alt="members"> Members</a>
+                <a href="./Members/AdminMember.php"><img src="../../../assets/icons/user.png" alt="members"> Members</a>
             </li>
             <li>
                 <a href="#"><i class="fas fa-users"></i> Payments</a>
