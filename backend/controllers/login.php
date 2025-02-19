@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $_SESSION['user_id'] = $user['User_ID'];
             $_SESSION['user_email'] = $user['email'];
+            $_SESSION['user_name'] = $user['name'];
             $_SESSION['user_role_id'] = $user['role_ID'];
             
             // Redirect based on role
@@ -25,6 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: ../../frontend/pages/php/Admin/AdminHome.php"); // Admin page
             } elseif ($_SESSION['user_role_id'] == 2) {
                 header("Location: ../../frontend/pages/php/Authentication/dashboard.php");
+            } elseif ($_SESSION['user_role_id'] == 3) {
+                header("Location: ../../frontend/pages/php/Member/MemberHome.php");
             } else {
                 header("Location: ../../frontend/pages/php/Authentication/dashboard.php"); // Default page
             }
