@@ -7,7 +7,7 @@ body {
 }
 
 .sidebar {
-    width: 150px;
+    width: 250px;
     height: 100vh;
     background: #000;
     color: #fff;
@@ -73,6 +73,7 @@ body {
     padding: 10px;
     border-top: 1px solid #222;
     cursor: pointer;
+    margin-bottom: 50px;
 }
 
 .user-profile img {
@@ -84,4 +85,5 @@ body {
 
 .user-profile i {
     color: #fff;
+    
 }
