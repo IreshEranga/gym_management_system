@@ -1,12 +1,8 @@
 .main-content {
-    margin-left: 230px;
+    margin-left: 255px;
 }
 
 
 .table-responsive {
     margin-top: 100px;
-}
-
-th {
-    background-color: darkcyan;
 }
