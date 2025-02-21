@@ -53,14 +53,14 @@ if (!isset($_SESSION['user_id'])) {
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th scope="col">User ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Mobile</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Emergency Contact</th>
-                        <th scope="col">Membership ID</th>
+                    <tr class="memberTabletr" style="background-color:rgb(0, 29, 114); text-align: left; color: white;">
+                        <th scope="col" style="padding: 8px; border: 1px solid #ddd;">User ID</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Name</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Email</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Address</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Emergency Contact</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Membership ID</th>
                     </tr>
                 </thead>
                 <tbody id="membersTableBody">
@@ -68,6 +68,24 @@ if (!isset($_SESSION['user_id'])) {
                 </tbody>
             </table>
         </div>
+        <!-- <div style="overflow-x:auto;">
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+        <thead>
+            <tr style="background-color: #f2f2f2; text-align: left;">
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">User ID</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Name</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Email</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Address</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Emergency Contact</th>
+                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Membership ID</th>
+            </tr>
+        </thead>
+        <tbody id="membersTableBody">
+            
+        </tbody>
+    </table>
+</div> -->
     </div>
 
 
