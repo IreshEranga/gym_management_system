@@ -55,12 +55,12 @@ if (!isset($_SESSION['user_id'])) {
                 <thead>
                     <tr class="memberTabletr" style="background-color:rgb(0, 29, 114); text-align: left; color: white;">
                         <th scope="col" style="padding: 8px; border: 1px solid #ddd;">User ID</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Name</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Email</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Address</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Emergency Contact</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Actions</th>
+                        <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Name</th>
+                        <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Email</th>
+                        <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
+                        <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Address</th>
+                        <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Emergency Contact</th>
+                        <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="membersTableBody">
