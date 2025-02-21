@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_id'])) {
                     <img src="../../../assets/gif/user.gif" alt="Members Icon">
                 </div>
                 <h2>Total Members</h2>
-                <p>250</p>
+                <p id="totalMembers">Loading...</p>
             </div>
 
             <div class="card">
@@ -52,10 +52,10 @@ if (!isset($_SESSION['user_id'])) {
         <div class="adminCards">
             <div class="card">
                 <div class="icon">
-                    <img src="../../../assets/icons/trainers.svg" alt="Trainers Icon">
+                    <img src="../../../assets/gif/trainer.gif" alt="Trainers Icon">
                 </div>
                 <h2>Trainers</h2>
-                <p>10</p>
+                <p id="totalTrainers">Loading...</p>
             </div>
 
             <div class="card">
@@ -75,5 +75,43 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
+
+
+    <script>
+        function fetchTotalMembers() {
+            fetch('../../../../backend/controllers/Member/getAllMemberCount.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('totalMembers').innerText = data.total_members ?? "0";
+                })
+                .catch(error => {
+                    console.error("Error fetching total members:", error);
+                    document.getElementById('totalMembers').innerText = "Error";
+                });
+        }
+
+        function fetchTotalTrainers() {
+            fetch('../../../../backend/controllers/Trainer/getAllTrainerCount.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('totalTrainers').innerText = data.total_trainers ?? "0";
+                })
+                .catch(error => {
+                    console.error("Error fetching total members:", error);
+                    document.getElementById('totalTrainers').innerText = "Error";
+                });
+        }
+
+        // Fetch total members on page load
+        window.onload = function() {
+            fetchTotalMembers();
+            fetchTotalTrainers();
+        };
+
+    </script>
+    
+    <script>
+        
+    </script>
 </body>
 </html>

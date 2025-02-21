@@ -20,7 +20,7 @@
                 <a href="#"><img src="../../../assets/icons/home.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Memberships</a>
             </li>
             <li>
-                <a href="#"><img src="../../../assets/icons/home.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Trainers</a>
+                <a href="./Trainers/AdminTrainer.php"><img src="../../../assets/icons/home.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Trainers</a>
             </li>
             <li>
                 <a href="./Members/AdminMember.php"><img src="../../../assets/icons/user.png" alt="members" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Members</a>

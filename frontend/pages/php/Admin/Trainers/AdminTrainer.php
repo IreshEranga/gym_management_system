@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard - Members</title>
-    <link rel="stylesheet" href="../../../../css/Admin/Members/AdminMember.css"> 
+    <link rel="stylesheet" href="../../../../css/Admin/Trainer/AdminTrainer.css"> 
     <link rel="stylesheet" href="../../../../css/Admin/SideBar.css"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,10 +29,10 @@ if (!isset($_SESSION['user_id'])) {
             <li>
                 <a href="#"><img src="../../../assets/icons/user.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Memberships</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="#"><img src="../../../assets/icons/user.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Trainers</a>
             </li>
-            <li class="active">
+            <li >
                 <a href="#"><img src="../../../../assets/icons/user.png" alt="members" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Members</a>
             </li>
             <li>
@@ -60,7 +60,6 @@ if (!isset($_SESSION['user_id'])) {
                 <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
                 <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Address</th>
                 <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Emergency Contact</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Membership ID</th>
                 <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Actions</th>
                     </tr>
                 </thead>
@@ -69,24 +68,7 @@ if (!isset($_SESSION['user_id'])) {
                 </tbody>
             </table>
         </div>
-        <!-- <div style="overflow-x:auto;">
-    <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
-        <thead>
-            <tr style="background-color: #f2f2f2; text-align: left;">
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">User ID</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Name</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Email</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Mobile</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Address</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Emergency Contact</th>
-                <th scope="col" style="padding: 8px; border: 1px solid #ddd;">Membership ID</th>
-            </tr>
-        </thead>
-        <tbody id="membersTableBody">
-            
-        </tbody>
-    </table>
-</div> -->
+        
     </div>
 
 
@@ -94,42 +76,35 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- AJAX for fetch member data -->
     <script>
-        function fetchMembers() {
+        function fetchTrainers() {
             const xhr = new XMLHttpRequest();
-            xhr.open("GET", "../../../../../backend/controllers/Member/getAllMembers.php", true);
+            xhr.open("GET", "../../../../../backend/controllers/Trainer/getAllTrainers.php", true);
             xhr.setRequestHeader("Content-Type", "application/json");
 
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    const members = JSON.parse(xhr.responseText); // Parse the JSON response
+                    const trainers = JSON.parse(xhr.responseText); // Parse the JSON response
 
-                    if (members.error) {
-                        alert(members.error);  // Show error if no members found
+                    if (trainers.error) {
+                        alert(trainers.error);  // Show error if no trainers found
                     } else {
                         const tableBody = document.getElementById('membersTableBody');
                         tableBody.innerHTML = ""; // Clear any previous rows
 
                         // Loop through the members and add rows to the table
-                        members.forEach(function(member) {
+                        trainers.forEach(function(trainer) {
                             const row = document.createElement("tr");
 
-                            const membershipId = member.membership_id ? member.membership_id : "N/A";
-
-                            if(member.membership_id == null)
-                        {
-                            member.membership_id = "N/A"
-                        }
                             row.innerHTML = `
-                                <td scope="row">${member.User_ID}</td>
-                                <td scope="row">${member.name}</td>
-                                <td scope="row">${member.email}</td>
-                                <td scope="row">${member.mobile}</td>
-                                <td scope="row">${member.address}</td>
-                                <td scope="row">${member.emergency_contact_number}</td>
-                                <td scope="row">${membershipId}</td>
+                                <td scope="row">${trainer.User_ID}</td>
+                                <td scope="row">${trainer.name}</td>
+                                <td scope="row">${trainer.email}</td>
+                                <td scope="row">${trainer.mobile}</td>
+                                <td scope="row">${trainer.address}</td>
+                                <td scope="row">${trainer.emergency_contact_number}</td>
                                 <td scope="row">
-                                    <button onclick="updateMember('\${member.User_ID}')" class="btn btn-warning btn-sm">Update</button>
-                                    <button onclick="deleteMember('\${member.User_ID}')" class="btn btn-danger btn-sm">Delete</button>
+                                    <button onclick="updateTariner('\${trainer.User_ID}')" class="btn btn-warning btn-sm">Update</button>
+                                    <button onclick="deleteTrainer('\${trainer.User_ID}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             `;
                             tableBody.appendChild(row);
@@ -149,7 +124,7 @@ if (!isset($_SESSION['user_id'])) {
 
         // Call the fetchMembers function when the page loads
         window.onload = function() {
-            fetchMembers();
+            fetchTrainers();
         };
     </script>
 </body>
