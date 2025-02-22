@@ -115,6 +115,51 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 </div>
 
+<!-- Update Member Modal -->
+<div class="modal fade" id="updateMemberModal" tabindex="-1" aria-labelledby="updateMemberLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateMemberLabel">Update Member</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateMemberForm">
+                    <div class="mb-3">
+                        <label for="updateUserID" class="form-label">User ID</label>
+                        <input type="text" class="form-control" id="updateUserID" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="updateName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="updateEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateMobile" class="form-label">Mobile</label>
+                        <input type="text" class="form-control" id="updateMobile" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="updateAddress" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateEmergencyContact" class="form-label">Emergency Contact</label>
+                        <input type="text" class="form-control" id="updateEmergencyContact" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="updateMembershipID" class="form-label">Membership ID (Optional)</label>
+                        <input type="text" class="form-control" id="updateMembershipID">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Member</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Toast Message -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
@@ -148,8 +193,10 @@ if (!isset($_SESSION['user_id'])) {
                                 <td>${member.emergency_contact_number}</td>
                                 <td>${member.membership_id ?? "N/A"}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm">Update</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-warning btn-sm" onclick="showUpdateModal('${member.User_ID}', '${member.name}', '${member.email}', '${member.mobile}', '${member.address}', '${member.emergency_contact_number}', '${member.membership_id}')">Update</button>
+
+                                    <button class="btn btn-danger btn-sm" onclick="deleteMember('${member.User_ID}')">Delete</button>
+
                                 </td>
                             </tr>
                         `;
@@ -159,50 +206,119 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         document.getElementById("addMemberForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+            event.preventDefault();
 
-    const formData = {
-        name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        mobile: document.getElementById("mobile").value.trim(),
-        address: document.getElementById("address").value.trim(),
-        emergency_contact_number: document.getElementById("emergencyContact").value.trim(),
-        membership_ID: document.getElementById("membershipID").value.trim() || null,
-        password: document.getElementById("password").value.trim()
-    };
+            const formData = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                mobile: document.getElementById("mobile").value.trim(),
+                address: document.getElementById("address").value.trim(),
+                emergency_contact_number: document.getElementById("emergencyContact").value.trim(),
+                membership_ID: document.getElementById("membershipID").value.trim() || null,
+                password: document.getElementById("password").value.trim()
+            };
 
-    fetch("../../../../../backend/controllers/Member/createMember.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            let toastMessage = document.getElementById("toastMessage");
-                toastMessage.querySelector(".toast-body").textContent = data.success;
-                let toast = new bootstrap.Toast(toastMessage);
-                toast.show();
+            fetch("../../../../../backend/controllers/Member/createMember.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    let toastMessage = document.getElementById("toastMessage");
+                        toastMessage.querySelector(".toast-body").textContent = data.success;
+                        let toast = new bootstrap.Toast(toastMessage);
+                        toast.show();
 
-                // Hide the modal
-                let modalElement = document.getElementById("addMemberModal");
-                let modalInstance = bootstrap.Modal.getInstance(modalElement);
+                        // Hide the modal
+                        let modalElement = document.getElementById("addMemberModal");
+                        let modalInstance = bootstrap.Modal.getInstance(modalElement);
+                        if (modalInstance) {
+                            modalInstance.hide();
+                        }
+
+                        // Reset the form
+                        document.getElementById("addMemberForm").reset();
+
+                        // Refresh the members table
+                        fetchMembers();
+
+                } else {
+                    alert("Error: " + (data.error || "Unknown error"));
+                }
+            })
+            .catch(error => console.error("Fetch error:", error));
+        });
+
+        function showUpdateModal(userID, name, email, mobile, address, emergencyContact, membershipID) {
+            document.getElementById("updateUserID").value = userID;
+            document.getElementById("updateName").value = name;
+            document.getElementById("updateEmail").value = email;
+            document.getElementById("updateMobile").value = mobile;
+            document.getElementById("updateAddress").value = address;
+            document.getElementById("updateEmergencyContact").value = emergencyContact;
+            document.getElementById("updateMembershipID").value = membershipID;
+
+            let updateModal = new bootstrap.Modal(document.getElementById("updateMemberModal"));
+            updateModal.show();
+        }
+
+        document.getElementById("updateMemberForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = {
+                User_ID: document.getElementById("updateUserID").value,
+                name: document.getElementById("updateName").value.trim(),
+                email: document.getElementById("updateEmail").value.trim(),
+                mobile: document.getElementById("updateMobile").value.trim(),
+                address: document.getElementById("updateAddress").value.trim(),
+                emergency_contact_number: document.getElementById("updateEmergencyContact").value.trim(),
+                membership_ID: document.getElementById("updateMembershipID").value.trim() || null
+            };
+
+            fetch("../../../../../backend/controllers/Member/updateMember.php", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                showToastMessage(data.success ? data.success : "Error updating member");
+
+                let modalInstance = bootstrap.Modal.getInstance(document.getElementById("updateMemberModal"));
                 if (modalInstance) {
                     modalInstance.hide();
                 }
 
-                // Reset the form
-                document.getElementById("addMemberForm").reset();
-
-                // Refresh the members table
                 fetchMembers();
+            })
+            .catch(error => console.error("Fetch error:", error));
+        });
 
-        } else {
-            alert("Error: " + (data.error || "Unknown error"));
+        function deleteMember(userID) {
+            if (!confirm("Are you sure you want to delete this member?")) return;
+
+            fetch("../../../../../backend/controllers/Member/deleteMember.php", {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ User_ID: userID })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showToastMessage(data.success ? data.success : "Error deleting member");
+                fetchMembers();
+            })
+            .catch(error => console.error("Fetch error:", error));
         }
-    })
-    .catch(error => console.error("Fetch error:", error));
-});
+
+        function showToastMessage(message) {
+            let toastMessage = document.getElementById("toastMessage");
+            toastMessage.querySelector(".toast-body").textContent = message;
+            let toast = new bootstrap.Toast(toastMessage);
+            toast.show();
+        }
+
 
     
 
