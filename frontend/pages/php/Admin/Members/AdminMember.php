@@ -117,7 +117,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
     <!-- Toast Message -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast-container position-fixed top-0 end-0 p-3">
         <div id="toastMessage" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body"></div>
@@ -179,10 +179,24 @@ if (!isset($_SESSION['user_id'])) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            document.querySelector("#toastMessage .toast-body").textContent = data.success;
-            new bootstrap.Toast(document.getElementById("toastMessage")).show();
-            document.getElementById("addMemberForm").reset();
-            fetchMembers(); // Refresh the table
+            let toastMessage = document.getElementById("toastMessage");
+                toastMessage.querySelector(".toast-body").textContent = data.success;
+                let toast = new bootstrap.Toast(toastMessage);
+                toast.show();
+
+                // Hide the modal
+                let modalElement = document.getElementById("addMemberModal");
+                let modalInstance = bootstrap.Modal.getInstance(modalElement);
+                if (modalInstance) {
+                    modalInstance.hide();
+                }
+
+                // Reset the form
+                document.getElementById("addMemberForm").reset();
+
+                // Refresh the members table
+                fetchMembers();
+
         } else {
             alert("Error: " + (data.error || "Unknown error"));
         }
