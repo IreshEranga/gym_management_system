@@ -171,6 +171,26 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 
+    <!-- Delete Confirmation Modal -->
+        <div class="modal fade" id="deleteMemberModal" tabindex="-1" aria-labelledby="deleteMemberLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteMemberLabel">Confirm Deletion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this member?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Yes, Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- AJAX for fetching and adding members -->
@@ -246,6 +266,8 @@ if (!isset($_SESSION['user_id'])) {
 
                 } else {
                     alert("Error: " + (data.error || "Unknown error"));
+                    showToastMessage("Error: " + (data.error || "Unknown error"), true);
+
                 }
             })
             .catch(error => console.error("Fetch error:", error));
@@ -296,25 +318,69 @@ if (!isset($_SESSION['user_id'])) {
             .catch(error => console.error("Fetch error:", error));
         });
 
-        function deleteMember(userID) {
-            if (!confirm("Are you sure you want to delete this member?")) return;
+        // function deleteMember(userID) {
+        //     if (!confirm("Are you sure you want to delete this member?")) return;
 
+        //     fetch("../../../../../backend/controllers/Member/deleteMember.php", {
+        //         method: "DELETE",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify({ User_ID: userID })
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         showToastMessage(data.success ? data.success : "Error deleting member");
+        //         fetchMembers();
+        //     })
+        //     .catch(error => console.error("Fetch error:", error));
+        // }
+
+        let userToDelete = null; // Store the User ID of the member to be deleted
+
+    function deleteMember(userID) {
+        // Store the user ID in a variable before showing the modal
+        userToDelete = userID;
+
+        // Show the custom confirmation modal
+        let deleteModal = new bootstrap.Modal(document.getElementById("deleteMemberModal"));
+        deleteModal.show();
+    }
+
+// Event listener for the confirmation button inside the modal
+    document.getElementById("confirmDeleteBtn").addEventListener("click", function() {
+        if (userToDelete) {
             fetch("../../../../../backend/controllers/Member/deleteMember.php", {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ User_ID: userID })
+                body: JSON.stringify({ User_ID: userToDelete })
             })
             .then(response => response.json())
             .then(data => {
-                showToastMessage(data.success ? data.success : "Error deleting member");
-                fetchMembers();
+                showToastMessage(data.success ? data.success : "Error deleting member", data.success ? false : true);
+                fetchMembers(); // Refresh the members table after deletion
+                // Close the modal
+                let modalInstance = bootstrap.Modal.getInstance(document.getElementById("deleteMemberModal"));
+                modalInstance.hide();
             })
-            .catch(error => console.error("Fetch error:", error));
+            .catch(error => {
+                showToastMessage("Fetch error: " + error, true);
+            });
         }
+    });
 
-        function showToastMessage(message) {
+
+        function showToastMessage(message, isError = false) {
             let toastMessage = document.getElementById("toastMessage");
             toastMessage.querySelector(".toast-body").textContent = message;
+
+            // Set the toast color based on success or error
+            if (isError) {
+                toastMessage.classList.remove('bg-success');
+                toastMessage.classList.add('bg-danger'); // Red for errors
+            } else {
+                toastMessage.classList.remove('bg-danger');
+                toastMessage.classList.add('bg-success'); // Green for success
+            }
+
             let toast = new bootstrap.Toast(toastMessage);
             toast.show();
         }
