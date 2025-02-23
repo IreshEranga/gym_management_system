@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($_SESSION['user_role_id'] == 1) {
                 header("Location: ../../frontend/pages/php/Admin/AdminHome.php"); // Admin page
             } elseif ($_SESSION['user_role_id'] == 2) {
-                header("Location: ../../frontend/pages/php/Authentication/dashboard.php");
+                header("Location: ../../frontend/pages/php/Trainer/TrainerHome.php"); // Trainer page
             } elseif ($_SESSION['user_role_id'] == 3) {
-                header("Location: ../../frontend/pages/php/Member/MemberHome.php");
+                header("Location: ../../frontend/pages/php/Member/MemberHome.php"); // Member page
             } else {
                 header("Location: ../../frontend/pages/php/Authentication/dashboard.php"); // Default page
             }
