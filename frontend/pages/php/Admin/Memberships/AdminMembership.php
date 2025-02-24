@@ -21,6 +21,8 @@ if (!isset($_SESSION['user_id'])) {
     <div class="sidebar">
         <div class="logo">
             <i class="fas fa-dumbbell"></i> <span>Admin - Power Fit</span>
+
+            
         </div>
         <ul class="nav-links">
             <li>
