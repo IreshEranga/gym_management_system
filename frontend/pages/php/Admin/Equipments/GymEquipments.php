@@ -136,7 +136,7 @@ if (!isset($_SESSION['user_id'])) {
             status: document.getElementById("status").value
         };
 
-        fetch("../../../../../backend/controllers/Equipment/createGymEquipment.php", {
+        fetch("../../../../../backend/controllers/Equipments/createGymEquipment.php", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formData)
