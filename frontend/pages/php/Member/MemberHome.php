@@ -35,9 +35,10 @@ if (!isset($_SESSION['user_id'])) {
                 <li><a href="#about">About</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#membership">Schedules</a></li>
                 <li><a href="./MemberProfile.php">Member Profile</a></li>
                 <li><a href="../Authentication/logout.php">Logout</a></li>
-                <li><a href="#footer">Footer</a></li>
+                
             </ul>
         </nav>
         <div class="fas fa-bars"></div>
@@ -170,6 +171,24 @@ if (!isset($_SESSION['user_id'])) {
     </section>
     <!-- Feedback Button Section End -->
 
+    <section id="membership">
+    <div class="container">
+        <h1 class="section-title">Workout Schedules</h1>
+        <table class="workout-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>User ID</th>
+                </tr>
+            </thead>
+            <tbody id="workoutTableBody">
+                <!-- Workout rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
     <!-- Footer Section Start -->
     <section id="footer">
         <div class="footer-container">
@@ -197,16 +216,117 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- Script Section Start -->
     <script>
+      
+document.addEventListener('DOMContentLoaded', () => {
+    // Navbar toggle
+    const menuToggle = document.querySelector('.fa-bars');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('fa-times');
+        nav.classList.toggle('nav-toggle');
+    });
+
+    // Collapse nav on link click
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            // Check if the link href is pointing to an internal section
+            if (link.getAttribute("href").startsWith("#")) {
+                // Prevent default anchor behavior
+                event.preventDefault();
+                
+                const targetId = link.getAttribute("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        });
+    });
+});
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY >= 20) {
+            document.querySelector('header').classList.add('active');
+        } else {
+            document.querySelector('header').classList.remove('active');
+        }
+    });
+
+    // Load workouts when "Schedules" is clicked
+    const scheduleLink = document.querySelector("a[href='#membership']");
+    scheduleLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default anchor behavior
+
+        // Log to verify the event is triggered
+        console.log("Schedules link clicked!");
+
+        const container = document.getElementById("workoutTableBody");
+        
+        // Ensure the container exists
+        if (!container) {
+            console.error("Table container not found!");
+            return;
+        }
+
+        // Prevent multiple loads
+        if (container.dataset.loaded === "true") return;
+
+        // Check if the fetch is being called
+        console.log("Fetching workouts...");
+
+        fetch("../../../../../backend/controllers/Trainer/getAllWorkout.php")
+            .then(response => {
+                console.log("Response received!");
+                return response.json();
+            })
+            .then(data => {
+                console.log("Data loaded:", data);
+                container.innerHTML = ""; // Clear old content
+
+                // Handle error from backend
+                if (data.error) {
+                    container.innerHTML = `<tr><td colspan="3">${data.error}</td></tr>`;
+                    return;
+                }
+
+                // Handle message (e.g. "No workouts available.")
+                if (data.message) {
+                    container.innerHTML = `<tr><td colspan="3">${data.message}</td></tr>`;
+                    return;
+                }
+          
         $(document).ready(function () {
             $('.fa-bars').click(function () {
                 $(this).toggleClass('fa-times');
                 $('nav').toggleClass('nav-toggle');
             });
 
-            $('nav ul li a').click(function () {
-                $('.fa-bars').removeClass('fa-times');
-                $('nav').removeClass('nav-toggle');
+                // Generate table rows
+                data.forEach(workout => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${workout.title}</td>
+                        <td>${workout.description}</td>
+                        <td>${workout.user_ID}</td>
+                    `;
+                    container.appendChild(row);
+                });
+
+                container.dataset.loaded = "true";
+            })
+            .catch(error => {
+                console.error("Fetch failed:", error);
+                container.innerHTML = `<tr><td colspan="3">Error loading workouts: ${error.message}</td></tr>`;
             });
+
+
+        // Smooth scroll to the section
+        document.getElementById("membership").scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+</script>
 
             $(window).scroll(function () {
                 if ($(window).scrollTop() >= 20) {
@@ -218,6 +338,7 @@ if (!isset($_SESSION['user_id'])) {
         });
     </script>
     <!-- Script Section End -->
+
 
 </body>
 
