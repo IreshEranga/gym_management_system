@@ -52,10 +52,11 @@
         <button type="submit" class="btn btn-primary w-100">Login</button>
     </form>
 
-    <!-- Sign Up Link -->
-    <p class="mt-3 text-white">Don't have an account? 
-        <a href="./SignUp.php" class="text-warning">Sign Up</a>
-    </p>
+  <!-- Sign Up Link -->
+<p class="mt-3 text-white">Don't have an account? 
+    <a href="SignUp.html" class="text-warning">Sign Up</a>
+</p>
+
 </div>
     </form>
 </div>
