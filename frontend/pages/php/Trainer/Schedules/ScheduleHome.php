@@ -10,16 +10,21 @@ if (!isset($_SESSION['user_id'])) {
     const sessionUserID = <?php echo json_encode($_SESSION['user_id']); ?>;
 </script>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Workout Manager</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container mt-5">
+<div class="dashboard-container">
+
+<?php include '../TrainerSideBar.php'; ?>
     <h2>Workout List</h2>
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#workoutModal">
         Add Workout
@@ -57,7 +62,6 @@ if (!isset($_SESSION['user_id'])) {
                         <label>Description</label>
                         <textarea class="form-control" id="description" required></textarea>
                     </div>
-                    
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Create Workout</button>
@@ -73,6 +77,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = new bootstrap.Modal(document.getElementById('workoutModal'));
     const tableBody = document.getElementById("workoutTableBody");
 
+    // Load all workouts on page load
+    function fetchWorkouts() {
+        fetch("../../../../../backend/controllers/Trainer/getAllWorkout.php")
+            .then(response => response.json())
+            .then(data => {
+                tableBody.innerHTML = "";
+                if (Array.isArray(data)) {
+                    data.forEach(workout => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${workout.workout_ID}</td>
+                            <td>${workout.title}</td>
+                            <td>${workout.description}</td>
+                            <td>${workout.user_ID ?? ''}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    console.error("Unexpected response:", data);
+                    alert(data.error || "Failed to load workouts.");
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching workouts:", error);
+                alert("Server error while loading workouts.");
+            });
+    }
+
+    fetchWorkouts(); // Call on load
+
+    // Create workout and refresh table
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -95,16 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Workout created successfully!");
                 modal.hide();
                 form.reset();
-
-                // Optionally update the table
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${data.workout_ID}</td>
-                    <td>${title}</td>
-                    <td>${description}</td>
-                    <td>${user_ID ?? ''}</td>
-                `;
-                tableBody.appendChild(row);
+                fetchWorkouts(); // Reload all workouts
             } else {
                 alert("Error: " + (data.error || "Could not create workout."));
             }
@@ -116,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
