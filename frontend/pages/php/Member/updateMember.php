@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const userId = <?php echo json_encode($user_id); ?>; 
+            const userId = <?php echo json_encode($user_id); ?>;
 
             fetch(`../../../../backend/controllers/User/getAllUserData.php?user_id=${userId}`)
                 .then(response => response.json())
@@ -57,11 +57,11 @@
                 <img src="../../../assets/images/userProfile.png" alt="User Image">
             </div>
             <h3 id="user-name"></h3>
-            <p><strong>Email:</strong> <span id="user-email"></span></p>
-            <p><strong>Mobile:</strong> <span id="user-mobile"></span></p>
-            <p><strong>Address:</strong> <span id="user-address"></span></p>
-            <p><strong>Emergency Contact:</strong> <span id="user-emergency"></span></p>
-            <p><strong>Membership ID:</strong> <span id="user-membership"></span></p>
+            <p><strong>Email:</strong> <span id="user-email"></span> <input type="" name="email" id="email" class="form-control" placeholder="Enter your email" required></p> 
+            <p><strong>Mobile:</strong> <span id="user-mobile"></span><input type="" name="email" id="email" class="form-control" placeholder="Enter your email" required></p>
+            <p><strong>Address:</strong> <span id="user-address"></span><input type="" name="email" id="email" class="form-control" placeholder="Enter your email" required></p>
+            <p><strong>Emergency Contact:</strong> <span id="user-emergency"></span><input type="" name="email" id="email" class="form-control" placeholder="Enter your email" required></p>
+            <p><strong>Membership ID:</strong> <span id="user-membership"></span><input type="" name="email" id="email" class="form-control" placeholder="Enter your email" required></p>
         </div>
         <div id="profile-info" class="text-center"></div>
     </div>
