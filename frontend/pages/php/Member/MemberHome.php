@@ -11,9 +11,17 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../css/Member/style.css">
-    <script src="../jquery.js"></script>
     <title>Full Responsive Fitness Website Design Tutorial</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../../css/Member/style.css">
+    
+    <!-- jQuery -->
+    <script src="../jquery.js"></script>
+
+    <!-- Optional Bootstrap (for button styling) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -22,7 +30,6 @@ if (!isset($_SESSION['user_id'])) {
     <header>
         <nav>
             <ul>
-                <!-- These anchor links will scroll the page to the corresponding section -->
                 <li><a href="#home">Home</a></li>
                 <li><a href="#feature">Features</a></li>
                 <li><a href="#about">About</a></li>
@@ -33,9 +40,7 @@ if (!isset($_SESSION['user_id'])) {
                 <li><a href="#footer">Footer</a></li>
             </ul>
         </nav>
-
         <div class="fas fa-bars"></div>
-
         <div class="logo">
             <a href="#"><h1><span>Power</span>Fit</h1></a>
         </div>
@@ -44,54 +49,43 @@ if (!isset($_SESSION['user_id'])) {
 
     <!-- Home Section Start -->
     <section id="home" class="hero-section container-fluid">
-    <div class="row">
-        <!-- First Column for Text -->
-        <div class="col-md-6 d-flex flex-column justify-content-center">
-            <h1 class="gym-name-home">Power Fit</h1>
-            <p>Transform your fitness journey with expert trainers and top-class equipment.</p>
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <h1 class="gym-name-home">Power Fit</h1>
+                <p>Transform your fitness journey with expert trainers and top-class equipment.</p>
+            </div>
+            <div class="col-md-6 position-relative">
+                <img src="../../../assets/images/home_builder.png" alt="Man with dumbbells" class="img-fluid">
+            </div>
         </div>
-        <!-- Second Column for Image -->
-        <div class="col-md-6 position-relative">
-            <img src="../../../assets/images/home_builder.png" alt="Man with dumbbells" class="img-fluid">
-            <h1 class="gym-name-home text-overlay">Power Fit</h1>
-        </div>
-    </div>
-</section>
-
-
+    </section>
     <!-- Home Section End -->
 
     <!-- Feature Section Start -->
     <section id="feature">
         <h1>Features</h1>
         <div class="card-container">
-            <!-- Card 1 -->
             <div class="card">
-            <img src="/gym_management_system/frontend/assets/images/heavyweight.jpg" alt="Heavy Weight">
+                <img src="/gym_management_system/frontend/assets/images/heavyweight.jpg" alt="Heavy Weight">
                 <div class="content">
                     <h1>Heavy Weights</h1>
-                    <p>Our gym offers a wide range of heavy weights to help you build strength and muscle. Whether you are a beginner or an experienced lifter, you’ll find the equipment you need for your workouts. Train safely and effectively with our high-quality weights and supportive environment.</p>
-                    
+                    <p>Our gym offers a wide range of heavy weights to help you build strength and muscle.</p>
                 </div>
             </div>
 
-            <!-- Card 2 -->
             <div class="card">
-            <img src="/gym_management_system/frontend/assets/images/experttraimer.jpg" alt="Expert Trainer">
-    <div class="content">
-        <h1>Expert Trainers</h1>
-        <p>Our gym is proud to have a team of expert trainers who are dedicated to guiding you every step of the way. With years of experience and professional certifications, our trainers create personalized workout plans and provide constant support to help you reach your fitness goals safely and effectively. Whether you need motivation, advice, or a new challenge, our trainers are always here to help you succeed.</p>
-        
-    </div>
-</div>
+                <img src="/gym_management_system/frontend/assets/images/experttraimer.jpg" alt="Expert Trainer">
+                <div class="content">
+                    <h1>Expert Trainers</h1>
+                    <p>Our team of certified trainers creates personalized workout plans to help you succeed.</p>
+                </div>
+            </div>
 
-            <!-- Card 3 -->
             <div class="card">
-            <img src="/gym_management_system/frontend/assets/images/ecoenvironment.jpg" alt="Eco Environment">
+                <img src="/gym_management_system/frontend/assets/images/ecoenvironment.jpg" alt="Eco Environment">
                 <div class="content">
                     <h1>Eco Environment</h1>
-                    <p>Our gym features an echo-friendly environment designed for your comfort. We use special sound-absorbing materials like rubber flooring and acoustic panels to reduce noise and echoes, making workouts quieter and more enjoyable for everyone. This helps you focus better during your sessions and creates a calm, welcoming space for all members.</p>
-                    
+                    <p>Sound-absorbing materials ensure a calm and welcoming atmosphere for your workout.</p>
                 </div>
             </div>
         </div>
@@ -103,13 +97,9 @@ if (!isset($_SESSION['user_id'])) {
         <div class="image">
             <img src="pic.png" alt="">
         </div>
-
         <div class="content">
             <h1>Why You Should Choose Us?</h1>
-            <p>
-            At our gym, we’re committed to helping you achieve your fitness goals in a friendly and motivating environment. Our state-of-the-art equipment, experienced trainers, and flexible membership plans make it easy for everyone to get started and stay on track. Whether you’re a beginner or a seasoned athlete, we offer personalized support and a wide range of classes to keep you inspired. Choose us for a healthier, happier you!
-              
-            </p>
+            <p>We offer expert trainers, top-class equipment, and a supportive fitness environment.</p>
 
             <h1>Our Gym Includes</h1>
             <div class="buttons">
@@ -128,53 +118,35 @@ if (!isset($_SESSION['user_id'])) {
     <section id="gallery">
         <h1>Our Latest Products</h1>
         <div class="image-container">
-            <!-- Gallery Images -->
             <div class="image">
-            <img src="/gym_management_system/frontend/assets/images/product01.jpg" alt="Eco Environment">
-                <div class="info">
-                    <a ><button>status= working</button></a>
-                </div>
+                <img src="/gym_management_system/frontend/assets/images/product01.jpg" alt="Product">
+                <div class="info"><button>status= working</button></div>
             </div>
-
             <div class="image">
-            <img src="/gym_management_system/frontend/assets/images/product02.jpg" alt="Eco Environment">
-                <div class="info">
-                    <a href="#"><button>status = under maintenence</button></a>
-                </div>
+                <img src="/gym_management_system/frontend/assets/images/product02.jpg" alt="Product">
+                <div class="info"><button>status = under maintenance</button></div>
             </div>
-
             <div class="image">
-            <img src="/gym_management_system/frontend/assets/images/product03.jpg" alt="Eco Environment">
-                <div class="info">
-                    <a href="#"><button>status= working</button></a>
-                </div>
+                <img src="/gym_management_system/frontend/assets/images/product03.jpg" alt="Product">
+                <div class="info"><button>status= working</button></div>
             </div>
-
             <div class="image">
-            <img src="/gym_management_system/frontend/assets/images/product04.jpg" alt="Eco Environment">
-                <div class="info">
-                    <a href="#"><button>status= working</button></a>
-                </div>
+                <img src="/gym_management_system/frontend/assets/images/product04.jpg" alt="Product">
+                <div class="info"><button>status= working</button></div>
             </div>
-
             <div class="image">
-            <img src="/gym_management_system/frontend/assets/images/product05.jpg" alt="Eco Environment">
-                <div class="info">
-                    <a href="#"><button>status= working</button></a>
-                </div>
+                <img src="/gym_management_system/frontend/assets/images/product05.jpg" alt="Product">
+                <div class="info"><button>status= working</button></div>
             </div>
-
             <div class="image">
-            <img src="/gym_management_system/frontend/assets/images/product06.jpg" alt="Eco Environment">
-                <div class="info">
-                    <a href="#"><button>status= working</button></a>
-                </div>
+                <img src="/gym_management_system/frontend/assets/images/product06.jpg" alt="Product">
+                <div class="info"><button>status= working</button></div>
             </div>
         </div>
     </section>
     <!-- Gallery Section End -->
 
-    <!-- Contact Us Section Start -->
+    <!-- Contact Section Start -->
     <section id="contact">
         <form action="">
             <h1>Get In Touch</h1>
@@ -184,25 +156,28 @@ if (!isset($_SESSION['user_id'])) {
             <textarea placeholder="Message" cols="30" rows="10"></textarea>
             <input type="submit" value="Send">
         </form>
-
         <div class="image">
-        <img src="/gym_management_system/frontend/assets/images/message.jpg" alt="Eco Environment">
+            <img src="/gym_management_system/frontend/assets/images/message.jpg" alt="Message">
         </div>
     </section>
-    <!-- Contact Us Section End -->
+    <!-- Contact Section End -->
+
+    <!-- Feedback Button Section Start -->
+    <section id="feedback" class="text-center my-5">
+    <a href="../../html/comment.html">
+            <button class="btn btn-warning btn-lg">Give Feedback</button>
+        </a>
+    </section>
+    <!-- Feedback Button Section End -->
 
     <!-- Footer Section Start -->
     <section id="footer">
         <div class="footer-container">
-            <!-- Brand -->
             <div class="brand">
                 <div class="logo">
                     <a href="#"><h1><span>Power</span>Fit</h1></a>
                 </div>
-                
             </div>
-
-            <!-- Contact Info -->
             <div class="contact-info">
                 <div class="info">
                     <a href="#" class="fas fa-map-marker-alt" data-text="XYZ Address"></a>
@@ -210,8 +185,6 @@ if (!isset($_SESSION['user_id'])) {
                     <a href="#" class="fas fa-phone" data-text="+9100000000"></a>
                 </div>
             </div>
-
-            <!-- Newsletter -->
             <div class="letter">
                 <h1>Newsletter</h1>
                 <p>Submit your e-mail for latest updates</p>
@@ -225,7 +198,6 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Script Section Start -->
     <script>
         $(document).ready(function () {
-
             $('.fa-bars').click(function () {
                 $(this).toggleClass('fa-times');
                 $('nav').toggleClass('nav-toggle');
@@ -243,7 +215,6 @@ if (!isset($_SESSION['user_id'])) {
                     $('header').removeClass('active');
                 }
             });
-
         });
     </script>
     <!-- Script Section End -->
