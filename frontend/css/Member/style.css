@@ -1,0 +1,450 @@
+/* General Reset and Universal Styles */
+* {
+  font-family: 'Exo 2', sans-serif;
+  font-style: italic;
+  text-transform: uppercase;
+  -webkit-transition: all .2s linear;
+  transition: all .2s linear;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* HTML and Body */
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 2rem 3rem;
+  z-index: 10;
+}
+header nav {
+  background-color: #333;
+  padding: 10px 0;
+}
+header nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul li {
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  display: block;
+}
+
+header nav ul li a:hover {
+  background-color:#ffcc00;
+  border-radius: 5px;
+}
+
+header .fa-bars {
+  font-size: 4rem;
+  color: #ffcc00;
+  cursor: pointer;
+  margin: 0 2rem;
+  display: none;
+}
+
+header .logo {
+  margin: 0 2.5rem;
+}
+
+header .logo a {
+  text-decoration: none;
+}
+
+header .logo a h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+header .logo a h1 span {
+  color: #ffcc00;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000000;
+  color: white;
+  text-align: center;
+}
+
+.hero-section .row {
+  width: 100%;
+}
+
+.gym-name-home {
+  font-size: 50px;           /* Adjust font size */
+  font-weight: bold;         /* Make the text bold */
+  color: #fff;               /* Set text color to white */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Optional: Add some shadow for better visibility */
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase; /* Optional: Uppercase text */
+}
+
+/* Style to center the text over the image */
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centering the text */
+  z-index: 1; /* Ensure the text stays on top of the image */
+}
+
+/* Ensure image is responsive */
+.hero-section img {
+  width: 100%;
+  max-width: 550px;
+  object-fit: cover;
+}
+
+/* Feature Section */
+#feature {
+  height: auto;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  background: #ffcc00;
+}
+
+#feature h1 {
+  color: #fff;
+  font-size: 4rem;
+  margin: 2rem 0;
+}
+
+#feature .card-container {
+  width: 90vw;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+#feature .card-container .card {
+  width: 30rem;
+  height: 40rem;
+  margin: 2rem;
+  background: #fff;
+}
+
+#feature .card-container .card img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+#feature .card-container .card .content {
+  height: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+#feature .card-container .card .content h1 {
+  color: #ffcc00;
+  font-size: 2.5rem;
+  margin: 1rem 0;
+}
+
+#feature .card-container .card .content p {
+  font-size: 1.2rem;
+  padding: .5rem;
+}
+
+#feature .card-container .card .content button {
+  height: 4rem;
+  width: 14rem;
+  background: transparent;
+  border: 0.2rem solid #ffcc00;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color:#ffcc00;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+#feature .card-container .card .content button:hover {
+  background: #ffcc00;
+  color: #fff;
+}
+
+#feature .card-container .card:hover {
+  transform: translateY(-3rem);
+  box-shadow: 0 0 1rem #333;
+}
+
+/* About Section */
+#about {
+  display: flex;
+  justify-content: space-around;
+  background:black;
+}
+
+#about .image {
+  margin: 5rem 15rem;
+}
+
+#about .image img {
+  width: 30rem;
+}
+
+#about .content {
+  width: 90vw;
+}
+
+#about .content h1 {
+  font-size: 4rem;
+  margin: 3rem 0;
+  color: #ffcc00;
+}
+
+#about .content p {
+  font-size: 2rem;
+  padding-right: 6rem;
+  color: white;
+}
+
+#about .content .buttons button {
+  height: 4rem;
+  width: 14rem;
+  background: transparent;
+  border: 0.2rem solid#ffcc00;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ffcc00;
+  font-weight: bold;
+  margin: 2rem 2rem 2rem 0;
+}
+
+#about .content .buttons button:hover {
+  background: #ffcc00;
+  color: #fff;
+}
+
+/* Gallery Section */
+#gallery {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  background: #333;
+}
+
+#gallery h1 {
+  text-align: center;
+  font-size: 4rem;
+  color: #ffcc00;
+  margin: 2rem 0;
+}
+
+#gallery .image-container {
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#gallery .image-container .image {
+  height: 25rem;
+  width: 30rem;
+  margin: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+#gallery .image-container .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#gallery .image-container .image .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#gallery .image-container .image .info button {
+  height: 4rem;
+  width: 14rem;
+  background: transparent;
+  border: 0.2rem solid #ffcc00;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+#gallery .image-container .image .info button:hover {
+  background: #ffcc00;
+  color: #fff;
+}
+
+#gallery .image-container .image:hover .info {
+  bottom: 0%;
+}
+
+/* Contact Section */
+#contact {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  background: url(back-img.jpg), linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#contact form {
+  display: flex;
+  flex-flow: column;
+}
+
+#contact form h1 {
+  color: #ffcc00;
+  font-size: 4rem;
+}
+
+#contact form input {
+  height: 4rem;
+  background: transparent;
+  margin: 2rem 0;
+  padding: 0 1rem;
+  border: 0.2rem solid #ffcc00;
+  outline: none;
+  color: #fff;
+  font-weight: bold;
+  width: 40vw;
+}
+
+#contact form input:focus {
+  background: #ffcc00;
+}
+
+#contact form input[type="submit"] {
+  height: 4rem;
+  width: 14rem;
+  background: transparent;
+  border: 0.2rem solid #ffcc00;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ffcc00;
+  font-weight: bold;
+  background: #ffcc00;
+  color: #fff;
+}
+
+#contact form textarea {
+  resize: none;
+  background: transparent;
+  outline: none;
+  padding: 1rem;
+  color: #fff;
+  border: 0.2rem solid #ffcc00;
+  font-weight: bold;
+}
+
+#contact .image img {
+  height: 80vh;
+  width: 30vw;
+}
+
+/* Footer */
+#footer {
+  height: auto;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  background: #333;
+}
+
+#footer .msg {
+  text-align: center;
+  color: #fff;
+  margin: 2rem 0;
+}
+
+#footer .msg span {
+  color: #ffcc00;
+}
+
+#footer .footer-container {
+  width: 90vw;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#footer .footer-container .brand {
+  margin: 3rem 0;
+  flex: 1 0 25rem;
+}
+
+#footer .footer-container .brand .logo a h1 {
+  font-size: 3rem;
+  color: #fff;
+}
+
+#footer .footer-container .brand .icons a {
+  text-decoration: none;
+  color: #0a02e6;
+  font-size: 3rem;
+}
+
+#footer .footer-container .contact-info .info {
+  height: 16rem;
+  background: #ceb526;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer .footer-container .contact-info .info a {
+  font-size: 2rem;
+  text-decoration: none;
+  margin: 2rem 0;
+  color: #fff;
+  background: transparent;
+}
+
+#footer .footer-container .letter input[type="submit"] {
+  background: transparent;
+}

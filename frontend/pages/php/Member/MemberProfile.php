@@ -51,6 +51,7 @@ $user_id = $_SESSION['user_id'];
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="./MemberHome.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./updateMember.php">update</a></li>
                     <li class="nav-item"><a class="nav-link text-danger" href="../Authentication/Login.php">Logout</a></li>
                 </ul>
             </div>
