@@ -26,7 +26,7 @@ if (!isset($_SESSION['user_id'])) {
         <li><a href="../Memberships/AdminMembership.php"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Memberships</a></li>
         <li><a href="../Trainers/AdminTrainer.php"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Trainers</a></li>
         <li><a href="../Members/AdminMember.php"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Members</a></li>
-        <li><a href="#"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Payments</a></li>
+        
         <li class="active"><a href="#"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Equipment</a></li>
     </ul>
     <div class="user-profile">
@@ -114,8 +114,8 @@ if (!isset($_SESSION['user_id'])) {
                                 <td>${eq.last_service_date}</td>
                                 <td>${eq.status}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm">Edit</button>
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-warning btn-sm edit-btn" data-id="${eq.equipment_ID}" data-name="${eq.equipment_name}" data-date="${eq.last_service_date}" data-status="${eq.status}">Edit</button>
+                                    <button class="btn btn-danger btn-sm delete-btn" data-id="${eq.equipment_ID}">Delete</button>
                                 </td>
                             </tr>
                         `;
@@ -136,7 +136,7 @@ if (!isset($_SESSION['user_id'])) {
             status: document.getElementById("status").value
         };
 
-        fetch("../../../../../backend/controllers/Equipment/createGymEquipment.php", {
+        fetch("../../../../../backend/controllers/Equipments/createGymEquipment.php", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formData)
@@ -154,6 +154,95 @@ if (!isset($_SESSION['user_id'])) {
         })
         .catch(err => showToast("Fetch error: " + err, true));
     });
+
+    document.getElementById("equipmentTableBody").addEventListener("click", function (e) {
+    const target = e.target;
+
+    // Handle delete
+    if (target.classList.contains("delete-btn")) {
+        const id = target.getAttribute("data-id");
+        deleteEquipment(id);
+    }
+
+    // Handle edit
+    if (target.classList.contains("edit-btn")) {
+        const id = target.getAttribute("data-id");
+        const name = target.getAttribute("data-name");
+        const date = target.getAttribute("data-date");
+        const status = target.getAttribute("data-status");
+
+        const row = target.closest("tr");
+        editEquipment(row, {
+            equipment_ID: id,
+            equipment_name: name,
+            last_service_date: date,
+            status: status
+        });
+    }
+});
+
+    function deleteEquipment(id) {
+    if (!confirm("Are you sure you want to delete this equipment?")) return;
+
+    fetch("../../../../../backend/controllers/Equipments/deleteGymEquipment.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ equipment_ID: id })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            showToast(data.success);
+            fetchEquipment();
+        } else {
+            showToast(data.error || "Failed to delete", true);
+        }
+    })
+    .catch(err => showToast("Delete error: " + err, true));
+}
+
+function editEquipment(row, equipment) {
+    row.innerHTML = `
+        <td>${equipment.equipment_ID}</td>
+        <td><input class="form-control form-control-sm" value="${equipment.equipment_name}" id="editName${equipment.equipment_ID}"></td>
+        <td><input type="date" class="form-control form-control-sm" value="${equipment.last_service_date}" id="editDate${equipment.equipment_ID}"></td>
+        <td>
+            <select class="form-select form-select-sm" id="editStatus${equipment.equipment_ID}">
+                <option value="Operational" ${equipment.status === 'Operational' ? 'selected' : ''}>Operational</option>
+                <option value="Under Maintenance" ${equipment.status === 'Under Maintenance' ? 'selected' : ''}>Under Maintenance</option>
+            </select>
+        </td>
+        <td>
+            <button class="btn btn-success btn-sm" onclick="saveEdit(${equipment.equipment_ID})">Save</button>
+            <button class="btn btn-secondary btn-sm" onclick="fetchEquipment()">Cancel</button>
+        </td>
+    `;
+}
+
+function saveEdit(id) {
+    const updatedData = {
+        equipment_ID: id,
+        equipment_name: document.getElementById(`editName${id}`).value,
+        last_service_date: document.getElementById(`editDate${id}`).value,
+        status: document.getElementById(`editStatus${id}`).value
+    };
+
+    fetch("../../../../../backend/controllers/Equipments/updateGymEquipment.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            showToast(data.success);
+            fetchEquipment();
+        } else {
+            showToast(data.error || "Update failed", true);
+        }
+    })
+    .catch(err => showToast("Update error: " + err, true));
+}
 
     document.getElementById("logOutbtn").addEventListener("click", function () {
         window.location.href = "../../Authentication/logout.php"; 

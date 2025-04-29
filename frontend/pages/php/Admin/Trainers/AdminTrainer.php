@@ -27,7 +27,7 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="../AdminHome.php"><img src="../../../../assets/icons/home.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Home</a>
             </li>
             <li>
-                <a href="#"><img src="../../../assets/icons/user.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Memberships</a>
+                <a href="../Memberships/AdminMembership.php"><img src="../../../assets/icons/user.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Memberships</a>
             </li>
             <li class="active">
                 <a href="#"><img src="../../../assets/icons/user.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Trainers</a>
@@ -36,7 +36,7 @@ if (!isset($_SESSION['user_id'])) {
                 <a href="../Members/AdminMember.php"><img src="../../../../assets/icons/user.png" alt="members" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Members</a>
             </li>
             <li>
-                <a href="#"><img src="../../../assets/icons/user.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Payments</a>
+                <a href="../Equipments/GymEquipments.php"><img src="../../../assets/icons/user.png" alt="" style="width: 20px; height: 20px; margin-right: 10px; vertical-align: middle;"> Equipments</a>
             </li>
         </ul>
         <div class="user-profile">
