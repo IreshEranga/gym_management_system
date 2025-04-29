@@ -10,6 +10,28 @@
   margin: 0;
   padding: 0;
 }
+.workout-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+.workout-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.workout-card h2 {
+  margin-top: 0;
+  color: #333;
+}
+.workout-card p {
+  color: #555;
+}
 
 /* HTML and Body */
 html {
@@ -448,3 +470,42 @@ header .logo a h1 span {
 #footer .footer-container .letter input[type="submit"] {
   background: transparent;
 }
+
+.workout-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.workout-table th,
+.workout-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.workout-table th {
+  background-color: #222;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.workout-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.workout-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.section-title {
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #222;
+}
+
