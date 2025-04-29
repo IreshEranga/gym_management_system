@@ -26,7 +26,7 @@ if (!isset($_SESSION['user_id'])) {
         <li><a href="../Memberships/AdminMembership.php"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Memberships</a></li>
         <li><a href="../Trainers/AdminTrainer.php"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Trainers</a></li>
         <li><a href="../Members/AdminMember.php"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Members</a></li>
-        <li><a href="#"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Payments</a></li>
+        
         <li class="active"><a href="#"><img src="../../../../assets/icons/user.png" style="width: 20px;"> Equipment</a></li>
     </ul>
     <div class="user-profile">
