@@ -60,6 +60,11 @@ header .btn:hover {
     color: white;
 }
 
+.custom-black-header th {
+    background-color: #ffffff;
+    color: #000000;
+}
+
 .table-striped tbody tr:nth-child(odd) {
     background-color: #f9f9f9;
 }
